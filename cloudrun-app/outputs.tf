@@ -9,5 +9,5 @@ output "repository_url" {
 
 output "service_url" {
   description = "The cloud run url service."
-  value       = google_cloud_run_service.default.status
+  value       = google_cloud_run_service.default.status[0].url
 }
