@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    bucket = "cloudrun-app-tfstate"
+    bucket = "tsf-project-factory-cloudrun-app-tfstate"
   }
 }
