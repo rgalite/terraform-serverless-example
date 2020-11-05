@@ -24,4 +24,4 @@ steps:
     - '-c'
     - |
       cd cloudrun-app
-      terraform apply
+      terraform apply -auto-approve
