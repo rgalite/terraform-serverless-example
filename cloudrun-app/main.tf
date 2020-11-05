@@ -144,7 +144,6 @@ resource "google_cloud_run_service" "default" {
         "autoscaling.knative.dev/maxScale"        = "1000"
         "run.googleapis.com/cloudsql-instances"   = module.database.instance_connection_name
         "run.googleapis.com/vpc-access-connector" = module.vpc_connector.id
-
       }
     }
 
