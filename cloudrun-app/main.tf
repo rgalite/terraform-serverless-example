@@ -45,7 +45,7 @@ module "vpc_connector" {
   name          = "tsf-vpc-connector"
   region        = local.region
   ip_cidr_range = "10.8.0.0/28"
-  network       = "projects/${module.project.project_id}/global/networks/${module.vpc.network_name}"
+  network       = module.vpc.network_name
   project_id    = module.project.project_id
 }
 
