@@ -94,6 +94,26 @@ module "cloudbuild" {
   region          = local.region
 }
 
+module "project-iam-bindings" {
+  source   = "terraform-google-modules/iam/google//modules/projects_iam"
+  projects = [module.project.project_id]
+  mode     = "additive"
+
+  bindings = {
+    "roles/run.admin" = [
+      "serviceAccount:${module.project.project_number}@cloudbuild.gserviceaccount.com"
+    ]
+
+    "roles/iam.serviceAccountUser" = [
+      "serviceAccount:${module.project.project_number}@cloudbuild.gserviceaccount.com"
+    ],
+
+    "roles/cloudsql.client" = [
+      module.cloudrun_sa.iam_email
+    ]
+  }
+}
+
 resource "google_cloud_run_service_iam_member" "member" {
   service  = google_cloud_run_service.default.name
   location = google_cloud_run_service.default.location
