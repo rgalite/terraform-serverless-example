@@ -79,9 +79,6 @@ module "cloudrun_sa" {
   project_id   = module.project.project_id
   names        = ["cloudrun"]
   display_name = "Cloud Run"
-  project_roles = [
-    "${module.project.project_id}=>roles/cloudsql.client",
-  ]
 }
 
 module "repository" {
