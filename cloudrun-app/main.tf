@@ -40,6 +40,15 @@ module "vpc" {
   ]
 }
 
+module "vpc_connector" {
+  source        = "./modules/vpc_connector"
+  name          = "tsf-vpc-connector"
+  region        = local.region
+  ip_cidr_range = "10.8.0.0/28"
+  network       = "projects/${module.project.project_id}/global/networks/${module.vpc.network_name}"
+  project_id    = module.project.project_id
+}
+
 module "database" {
   source  = "GoogleCloudPlatform/sql-db/google//modules/safer_mysql"
   version = "4.2.0"
