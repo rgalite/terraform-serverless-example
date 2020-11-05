@@ -6,7 +6,7 @@ module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 9.2"
 
-  name                = "tsf-project"
+  name                = "tsf-project-cloudrun-app"
   random_project_id   = true
   org_id              = var.project_org_id
   billing_account     = var.project_billing_account
