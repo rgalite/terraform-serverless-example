@@ -114,6 +114,19 @@ module "project-iam-bindings" {
   }
 }
 
+module "service_account-iam-bindings" {
+  source = "terraform-google-modules/iam/google//modules/service_accounts_iam"
+
+  service_accounts = [module.cloudrun_sa]
+  project          = module.project.project_id
+  mode             = "additive"
+  bindings = {
+    "roles/run.invoker" = [
+      "allUsers"
+    ]
+  }
+}
+
 resource "google_cloud_run_service" "default" {
   name     = "${module.project.project_id}-srv"
   location = local.region
