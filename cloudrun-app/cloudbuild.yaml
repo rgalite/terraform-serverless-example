@@ -1,0 +1,26 @@
+- id: 'tf init'
+  name: 'hashicorp/terraform:0.13.5'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    cd cloudrun-app
+    terraform init
+
+- id: 'tf plan'
+  name: 'hashicorp/terraform:0.13.5'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    cd cloudrun-app
+    terraform plan
+
+- id: 'tf apply'
+  name: 'hashicorp/terraform:0.13.5'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    cd cloudrun-app
+    terraform apply
